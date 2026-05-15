@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support | Natenstine</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green-primary: #556B46;
+      --green-muted: #2B3328;
+      --dark-primary: #0E0E0E;
+      --light-primary: #D8D2BF;
+      --accent-red: #671417;
+
+      --font-display: 'Cinzel Decorative', serif;
+      --font-heading: 'Cinzel', serif;
+      --font-body: 'Inter', sans-serif;
+
+      --shadow-green: 0 0 30px rgba(111,163,79,0.12);
+      --border-soft: 1px solid rgba(216,210,191,0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--dark-primary);
+      color: var(--light-primary);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      background-image: linear-gradient(to bottom, rgba(255,255,255,0.015), transparent 25%);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1280px, 94%);
+      margin: 0 auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(10,10,10,0.88);
+      border-bottom: var(--border-soft);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 0;
+      gap: 1rem;
+    }
+
+    .brand img {
+      width: 34px;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 10px rgba(0,0,0,0.45));
+      transition: 0.3s ease;
+    }
+
+    .brand img:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12rem;
+    }
+
+    .nav-links a {
+      color: rgba(216,210,191,0.82);
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--green-primary);
+    }
+
+    .page-hero {
+      padding: 7rem 0 4rem;
+      border-bottom: var(--border-soft);
+    }
+
+    .eyebrow {
+      color: var(--green-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.22rem;
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 5rem);
+      line-height: 1.05;
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.08rem;
+      font-weight: 700;
+    }
+
+    .page-hero p {
+      max-width: 760px;
+      color: rgba(216,210,191,0.72);
+      font-size: 1.05rem;
+    }
+
+    .support-section {
+      padding: 5rem 0 6rem;
+    }
+
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.25rem;
+      align-items: stretch;
+    }
+
+    .support-card {
+      border: var(--border-soft);
+      background: linear-gradient(to bottom right, rgba(255,255,255,0.018), rgba(255,255,255,0.005));
+      padding: 1.7rem;
+      position: relative;
+      overflow: hidden;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .support-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, rgba(85,107,70,0.5), transparent);
+      opacity: 0.7;
+    }
+
+    .support-card h2 {
+      font-family: var(--font-heading);
+      color: var(--green-primary);
+      font-size: 1.38rem;
+      line-height: 1.15;
+      letter-spacing: 0.045rem;
+      margin-bottom: 1.45rem;
+      white-space: nowrap;
+    }
+
+    .support-list {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .support-item {
+      border: var(--border-soft);
+      padding: 0.88rem 0.9rem;
+      background: rgba(255,255,255,0.015);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0.8rem;
+      transition: 0.25s ease;
+      font-size: 0.86rem;
+      white-space: nowrap;
+    }
+
+    .support-item:hover {
+      transform: translateY(-2px);
+      border-color: rgba(111,163,79,0.24);
+      color: var(--green-primary);
+    }
+
+    .support-item span {
+      color: rgba(216,210,191,0.48);
+      text-transform: uppercase;
+      letter-spacing: 0.055rem;
+      font-size: 0.58rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .support-note {
+      grid-column: 1 / -1;
+      margin-top: 2rem;
+      border: var(--border-soft);
+      background: rgba(255,255,255,0.012);
+      padding: 2rem;
+      text-align: center;
+      color: rgba(216,210,191,0.7);
+    }
+
+    .support-note h3 {
+      font-family: var(--font-heading);
+      color: var(--green-primary);
+      font-size: 1.5rem;
+      letter-spacing: 0.08rem;
+      margin-bottom: 1rem;
+    }
+
+    .support-note strong {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--green-primary);
+      font-family: var(--font-heading);
+      letter-spacing: 0.08rem;
+      font-size: 1rem;
+    }
+
+    footer {
+      padding: 4rem 0 2rem;
+      text-align: center;
+      border-top: var(--border-soft);
+    }
+
+    .footer-title {
+      font-family: var(--font-display);
+      color: var(--green-primary);
+      letter-spacing: 0.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-text {
+      color: rgba(216,210,191,0.52);
+      font-size: 0.92rem;
+    }
+
+    .copyright {
+      margin-top: 1.4rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.08rem;
+      color: rgba(216,210,191,0.34);
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 980px) {
+      .support-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .support-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-inner {
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.74rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .page-hero {
+        padding-top: 5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Natenstine Home">
+        <img src="logo.png" alt="Natenstine Logo">
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="the-nexus.html">The Nexus</a>
+        <a href="live.html">Live</a>
+        <a href="about.html">About</a>
+        <a href="links.html">Links</a>
+        <a href="support.html" class="active">Support</a>
+        <a href="mail.html">Mail</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="page-hero">
+      <div class="container">        <h1><span style="color: var(--green-primary);">S</span>upport</h1>
+
+        <p>
+          Support helps maintain broadcasts, stories, projects, strange worlds, experiments, and the continued expansion of the Nexus.
+        </p>
+      </div>
+    </header>
+
+    <section class="support-section">
+      <div class="container">
+
+        <div class="support-grid">
+
+          <div class="support-card">
+            <h2>Direct Support</h2>
+
+            <div class="support-list">
+              <a class="support-item" href="https://www.paypal.com/donate/?hosted_button_id=RDJZ4M7R3JRJN" target="_blank" rel="noopener noreferrer">
+                PayPal
+                <span>One-Time</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="support-card">
+            <h2>Memberships</h2>
+
+            <div class="support-list">
+              <a class="support-item" href="https://www.patreon.com/natenstine" target="_blank" rel="noopener noreferrer">
+                Patreon
+                <span>Ongoing Support</span>
+              </a>
+
+              <a class="support-item" href="https://ko-fi.com/natenstine" target="_blank" rel="noopener noreferrer">
+                Ko-fi
+                <span>Tips / Member</span>
+              </a>
+
+              <a class="support-item" href="https://discord.gg/4kmRcWj" target="_blank" rel="noopener noreferrer">
+                Discord
+                <span>Community</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="support-card">
+            <h2>Merchandise</h2>
+
+            <div class="support-list">
+              <a class="support-item" href="https://suchgeek.com/" target="_blank" rel="noopener noreferrer">
+                Such Geek Store
+                <span>Artifacts</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="support-card">
+            <h2>Affiliates</h2>
+
+            <div class="support-list">              <a class="support-item" href="https://www.twitch.tv/natenstinegames/about" target="_blank" rel="noopener noreferrer">
+                Twitch Subs
+                <span>Platform</span>
+              </a>
+            </div>
+          </div>
+
+          
+
+          <div class="support-note">
+            <h3>Contact</h3>
+            Collaborations, sponsorships, affiliate partnerships, support inquiries, and opportunities connected to the Nexus.
+            <br>
+            <strong>Hello@natenstine.com</strong>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-title"><span style="color: var(--green-primary);">N</span>atenstine</div>
+
+      <div class="footer-text">
+        Broadcasts • Stories • Culture • Strange Worlds
+      </div>
+
+      <div class="copyright">
+        © Natenstine. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

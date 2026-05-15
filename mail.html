@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mail | Natenstine</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green-primary: #556B46;
+      --green-muted: #2B3328;
+      --dark-primary: #0E0E0E;
+      --light-primary: #D8D2BF;
+      --accent-red: #671417;
+
+      --font-display: 'Cinzel Decorative', serif;
+      --font-heading: 'Cinzel', serif;
+      --font-body: 'Inter', sans-serif;
+
+      --shadow-green: 0 0 30px rgba(111, 163, 79, 0.12);
+      --border-soft: 1px solid rgba(216, 210, 191, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--dark-primary);
+      color: var(--light-primary);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      overflow-x: hidden;
+      background-image: linear-gradient(to bottom, rgba(255,255,255,0.015), transparent 25%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(10, 10, 10, 0.88);
+      border-bottom: var(--border-soft);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 0;
+    }
+
+    .brand img {
+      width: 34px;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 10px rgba(0,0,0,0.45));
+      transition: 0.3s ease;
+    }
+
+    .brand img:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12rem;
+    }
+
+    .nav-links a {
+      color: rgba(216,210,191,0.82);
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--green-primary);
+    }
+
+    main {
+      min-height: 78vh;
+    }
+
+    .page-hero {
+      padding: 7rem 0 4rem;
+      border-bottom: var(--border-soft);
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 5rem);
+      line-height: 1.05;
+      color: var(--light-primary);
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.08rem;
+      text-transform: none;
+      font-weight: 700;
+    }
+
+    .page-hero p {
+      max-width: 720px;
+      color: rgba(216,210,191,0.72);
+      font-size: 1.05rem;
+    }
+
+    .mail-section {
+      padding: 4.5rem 0 6rem;
+    }
+
+    .mail-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .mail-card,
+    .note-card {
+      border: var(--border-soft);
+      background: linear-gradient(to bottom right, rgba(255,255,255,0.018), rgba(255,255,255,0.005));
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mail-card::before,
+    .note-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, rgba(85,107,70,0.5), transparent);
+      opacity: 0.7;
+    }
+
+    .mail-card h2,
+    .note-card h2 {
+      font-family: var(--font-heading);
+      color: var(--green-primary);
+      font-size: 1.7rem;
+      letter-spacing: 0.08rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .address-box {
+      border: var(--border-soft);
+      background: rgba(0,0,0,0.18);
+      padding: 1.5rem;
+      font-family: var(--font-heading);
+      color: rgba(216,210,191,0.88);
+      font-size: 1.1rem;
+      letter-spacing: 0.06rem;
+      line-height: 1.9;
+    }
+
+    .mail-card p,
+    .note-card p,
+    .note-card li {
+      color: rgba(216,210,191,0.7);
+      font-size: 0.96rem;
+    }
+
+    .note-card ul {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+      margin-top: 0.8rem;
+    }
+
+    .note-card li::before {
+      content: "//";
+      color: var(--accent-red);
+      margin-right: 0.6rem;
+    }
+
+    .small-note {
+      margin-top: 1.4rem;
+      color: rgba(216,210,191,0.46);
+      font-size: 0.82rem;
+    }
+
+    footer {
+      padding: 4rem 0 2rem;
+      text-align: center;
+      border-top: var(--border-soft);
+    }
+
+    .footer-title {
+      font-family: var(--font-display);
+      color: var(--green-primary);
+      letter-spacing: 0.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-text {
+      color: rgba(216,210,191,0.52);
+      font-size: 0.92rem;
+    }
+
+    .copyright {
+      margin-top: 1.4rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.08rem;
+      color: rgba(216,210,191,0.34);
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 860px) {
+      .mail-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-inner {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.74rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .page-hero {
+        padding-top: 5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Natenstine Home">
+        <img src="logo.png" alt="Natenstine Logo">
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="the-nexus.html">The Nexus</a>
+        <a href="live.html">Live</a>
+        <a href="about.html">About</a>
+        <a href="links.html">Links</a>
+        <a href="support.html">Support</a>
+        <a href="mail.html" class="active">Mail</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="page-hero">
+      <div class="container">
+        <h1><span style="color: var(--green-primary);">M</span>ail</h1>
+        <p>
+          Letters, parcels, and physical correspondence for Natenstine.
+        </p>
+      </div>
+    </header>
+
+    <section class="mail-section">
+      <div class="container mail-grid">
+
+        <div class="mail-card">
+          <h2>Postal Address</h2>
+          <div class="address-box">
+            Natenstine<br>
+            PO Box 4343<br>
+            Baldivis WA 6171<br>
+            Australia
+          </div>
+
+          <p class="small-note">
+            This PO Box accepts letters and parcels.
+          </p>
+
+          </div>
+
+        <div class="note-card">
+          <h2>Before Sending</h2>
+          <p>
+            Letters, postcards, parcels, and community mail are always welcome.
+          </p>
+
+          <ul>
+            
+            <li>No hazardous, illegal, or perishable items.</li>
+            <li>If you do not want something shown or discussed publicly, include a note with your letter or parcel.</li>
+            
+          </ul>
+
+          <p class="small-note" style="margin-top: 3.2rem;">
+            Questions?
+            <span style="font-family: var(--font-heading); color: var(--green-primary); letter-spacing: 0.06rem; font-size: 0.92rem;">Hello@natenstine.com</span>
+          </p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-title"><span style="color: var(--green-primary);">N</span>atenstine</div>
+      <div class="footer-text">
+        Broadcasts • Stories • Culture • Strange Worlds
+      </div>
+      <div class="copyright">
+        © Natenstine. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

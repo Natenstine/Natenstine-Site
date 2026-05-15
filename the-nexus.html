@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Nexus | Natenstine</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green-primary: #556B46;
+      --green-muted: #2B3328;
+      --dark-primary: #0E0E0E;
+      --light-primary: #D8D2BF;
+      --accent-red: #671417;
+
+      --font-display: 'Cinzel Decorative', serif;
+      --font-heading: 'Cinzel', serif;
+      --font-body: 'Inter', sans-serif;
+
+      --shadow-green: 0 0 30px rgba(111, 163, 79, 0.12);
+      --border-soft: 1px solid rgba(216, 210, 191, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--dark-primary);
+      color: var(--light-primary);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      overflow-x: hidden;
+      background-image: linear-gradient(to bottom, rgba(255,255,255,0.015), transparent 25%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1200px, 92%);
+      margin: 0 auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+      background: rgba(10, 10, 10, 0.88);
+      border-bottom: var(--border-soft);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 0;
+    }
+
+    .brand img {
+      width: 34px;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 10px rgba(0,0,0,0.45));
+      transition: 0.3s ease;
+    }
+
+    .brand img:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12rem;
+    }
+
+    .nav-links a {
+      color: rgba(216,210,191,0.82);
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--green-primary);
+    }
+
+    main {
+      min-height: 78vh;
+    }
+
+    .page-hero {
+      padding: 7rem 0 4rem;
+      border-bottom: var(--border-soft);
+    }
+
+    .eyebrow {
+      color: var(--green-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.22rem;
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 5rem);
+      line-height: 1.05;
+      color: var(--light-primary);
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.08rem;
+      text-transform: none;
+      font-weight: 700;
+    }
+
+    .page-hero p {
+      max-width: 740px;
+      color: rgba(216,210,191,0.72);
+      font-size: 1.05rem;
+    }
+
+    .index-note {
+      margin-top: 2rem;
+      max-width: 720px;
+      padding-left: 1rem;
+      border-left: 1px solid rgba(111,163,79,0.38);
+      color: rgba(216,210,191,0.58);
+      font-size: 0.92rem;
+    }
+
+    .nodes-section {
+      padding: 4.5rem 0 6rem;
+    }
+
+    .nodes-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      border-bottom: var(--border-soft);
+      padding-bottom: 1.2rem;
+    }
+
+    .nodes-header h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      letter-spacing: 0.08rem;
+      color: var(--light-primary);
+    }
+
+    .nodes-header span {
+      color: rgba(216,210,191,0.42);
+      text-transform: uppercase;
+      letter-spacing: 0.14rem;
+      font-size: 0.72rem;
+    }
+
+    .node-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .node-card {
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 1.6rem;
+      border: var(--border-soft);
+      background: linear-gradient(to bottom right, rgba(255,255,255,0.018), rgba(255,255,255,0.005));
+      position: relative;
+      overflow: hidden;
+      transition: 0.28s ease;
+    }
+
+    .node-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, rgba(85,107,70,0.5), transparent);
+      opacity: 0.7;
+    }
+
+    .node-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(111,163,79,0.22);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.42);
+    }
+
+    .node-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18rem;
+      color: rgba(216,210,191,0.42);
+      margin-bottom: 0.9rem;
+    }
+
+    .node-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.42rem;
+      line-height: 1.25;
+      color: var(--green-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .node-card p {
+      color: rgba(216,210,191,0.68);
+      font-size: 0.94rem;
+    }
+
+    .node-status {
+      margin-top: 1.5rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14rem;
+      color: rgba(216,210,191,0.4);
+    }
+
+    .node-status::before {
+      content: "// ";
+      color: var(--accent-red);
+    }
+
+    footer {
+      padding: 4rem 0 2rem;
+      text-align: center;
+      border-top: var(--border-soft);
+    }
+
+    .footer-title {
+      font-family: var(--font-display);
+      color: var(--green-primary);
+      letter-spacing: 0.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-text {
+      color: rgba(216,210,191,0.52);
+      font-size: 0.92rem;
+    }
+
+    .copyright {
+      margin-top: 1.4rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.08rem;
+      color: rgba(216,210,191,0.34);
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 980px) {
+      .node-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .node-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.74rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .page-hero {
+        padding-top: 5rem;
+      }
+
+      .nodes-header {
+        display: block;
+      }
+
+      .nodes-header span {
+        display: block;
+        margin-top: 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <a class="brand" href="index.html" aria-label="Natenstine Home">
+        <img src="logo.png" alt="Natenstine Logo">
+      </a>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="the-nexus.html" class="active">The Nexus</a>
+        <a href="live.html">Live</a>
+        <a href="about.html">About</a>
+        <a href="links.html">Links</a>
+        <a href="support.html">Support</a>
+        <a href="mail.html">Mail</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="page-hero">
+      <div class="container">
+        
+        <h1><span style="color: var(--green-primary);">T</span>he Nexus</h1>
+        <p>
+          The connected body of Natenstine works — broadcasts, stories, strange worlds, lore systems, creative experiments, and ongoing Nodes built around atmosphere, curiosity, and immersive exploration.
+        </p>
+
+        <div class="index-note">
+          Each Node links outward to its own space as it develops. Some are active, some are quiet, and some are still forming beneath the surface.
+        </div>
+      </div>
+    </header>
+
+    <section class="nodes-section">
+      <div class="container">
+        <div class="nodes-header">
+          <h2>Node Directory</h2>
+          <span>Interconnected works</span>
+        </div>
+
+        <div class="node-grid">
+
+          <a class="node-card" href="https://deadlettertheory.com/" target="_blank" rel="noopener noreferrer">
+            <div>
+              <div class="node-label">Node 01</div>
+              <h3>Dead Letter Theory</h3>
+              <p>Genre-crossing music experiments shaped through songwriting, gothic atmosphere, punk energy, theatrical jazz, hip-hop, ballads, pop, metal, and electronic glitch.</p>
+            </div>
+            <div class="node-status">Music Signal</div>
+          </a>
+
+          <a class="node-card" href="https://spookyfiles.online" target="_blank" rel="noopener noreferrer">
+            <div>
+              <div class="node-label">Node 02</div>
+              <h3>Spooky Files</h3>
+              <p>Paranormal records, cryptids, strange phenomena, anomalies, folklore, case-style documentation, and unexplained edges of reality.</p>
+            </div>
+            <div class="node-status">Investigation Archive</div>
+          </a>
+
+          <a class="node-card" href="writing.html">
+            <div>
+              <div class="node-label">Node 03</div>
+              <h3>Writing</h3>
+              <p>Horror shorts, novels, speculative fiction, fantasy, sci-fi, drama, series concepts, and original worlds developed through Natenstine.</p>
+            </div>
+            <div class="node-status">Story Vault</div>
+          </a>
+
+          <a class="node-card" href="https://suchgeek.com/" target="_blank" rel="noopener noreferrer">
+            <div>
+              <div class="node-label">Node 04</div>
+              <h3>Such Geek</h3>
+              <p>Merch, apparel, artifacts, visual identity pieces, and creator goods connected to gaming, strange worlds, and the wider Natenstine ecosystem.</p>
+            </div>
+            <div class="node-status">Artifact Store</div>
+          </a>
+
+          <a class="node-card" href="https://temperedorder.com" target="_blank" rel="noopener noreferrer">
+            <div>
+              <div class="node-label">Node 05</div>
+              <h3>Tempered Order</h3>
+              <p>A grounded correction to shallow masculinity culture through discipline, etiquette, capability, self-respect, responsibility, and refinement.</p>
+            </div>
+            <div class="node-status">Philosophy Node</div>
+          </a>
+
+          <a class="node-card" href="https://theculinarygrimoire.com" target="_blank" rel="noopener noreferrer">
+            <div>
+              <div class="node-label">Node 06</div>
+              <h3>Culinary Grimoire</h3>
+              <p>Recipes, kitchen craft, food systems, cooking rituals, practical meals, tools, techniques, and atmospheric culinary exploration.</p>
+            </div>
+            <div class="node-status">Kitchen Codex</div>
+          </a>
+
+          <a class="node-card" href="https://continuumlibrary.com" target="_blank" rel="noopener noreferrer">
+            <div>
+              <div class="node-label">Node 07</div>
+              <h3>Continuum Library</h3>
+              <p>Reading orders, timelines, franchise pathways, multiverses, canon structures, and guides through connected fictional worlds.</p>
+            </div>
+            <div class="node-status">Lore Index</div>
+          </a>
+
+          <a class="node-card" href="codeworks.html">
+            <div>
+              <div class="node-label">Node 08</div>
+              <h3>Codeworks</h3>
+              <p>Firefox themes, interface customization, digital experiments, GitHub projects, small utilities, and creative technical work.</p>
+            </div>
+            <div class="node-status">Digital Workshop</div>
+          </a>
+
+          <a class="node-card" href="https://bytebooty.com" target="_blank" rel="noopener noreferrer">
+            <div>
+              <div class="node-label">Node 09</div>
+              <h3>Byte Booty</h3>
+              <p>Curated pathways through the wider digital underground — streaming, games, books, forums, utilities, archives, tools, and difficult-to-find corners of the internet.</p>
+            </div>
+            <div class="node-status">Digital Cache</div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-title"><span style="color: var(--green-primary);">N</span>atenstine</div>
+      <div class="footer-text">
+        Broadcasts • Stories • Culture • Strange Worlds
+      </div>
+      <div class="copyright">
+        © Natenstine. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
