@@ -2,7 +2,7 @@
 
 The public repository for the Natenstine website and Nexus ecosystem.
 
-Built as a lightweight static site using HTML and CSS, deployed through Cloudflare Pages.
+Built as a lightweight static site using HTML and CSS, hosted here on GitHub and deployed through Cloudflare Pages.
 
 ## About
 
@@ -33,20 +33,18 @@ Current site sections include:
 
 ## Tech
 
-- HTML5
-- CSS3
-- Cloudflare Pages
-- GitHub
-
-No frameworks.
-No build pipeline.
-No unnecessary overhead.
+- ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+- ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+- ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+- ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+- ![Cloudflare](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=Cloudflare&logoColor=white)
 
 ## Notes
 
 This repository is public intentionally.
 
 Feel free to explore the structure, learn from it, reference ideas, or adapt concepts for your own projects.
+Comments, suggestions and fixes welcome.
 
 ## Related Projects
 
