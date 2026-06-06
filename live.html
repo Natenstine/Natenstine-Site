@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; script-src 'none'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://player.twitch.tv https://www.twitch.tv; upgrade-insecure-requests">
   <title>Live | Natenstine</title>
 
   <!-- Fonts -->
@@ -46,6 +47,10 @@
       text-decoration: none;
     }
 
+    .text-accent {
+      color: var(--green-primary);
+    }
+
     img {
       max-width: 100%;
       display: block;
@@ -71,6 +76,8 @@
       align-items: center;
       gap: 1rem;
       padding: 1.2rem 0;
+      width: min(1200px, 92%);
+      margin: 0 auto;
     }
 
     .brand img {
@@ -314,7 +321,7 @@
 </head>
 <body>
 
-  <nav>
+  <nav aria-label="Primary">
     <div class="container nav-inner">
       <a class="brand" href="index.html" aria-label="Natenstine Home">
         <img src="logo.png" alt="Natenstine Logo">
@@ -323,7 +330,7 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="the-nexus.html">The Nexus</a>
-        <a href="live.html" class="active">Live</a>
+        <a href="live.html" class="active" aria-current="page">Live</a>
         <a href="about.html">About</a>
         <a href="links.html">Links</a>
         <a href="support.html">Support</a>
@@ -336,7 +343,7 @@
     <header class="page-hero">
       <div class="container">
         
-        <h1><span style="color: var(--green-primary);">L</span>ive</h1>
+        <h1><span class="text-accent">L</span>ive</h1>
         <p>
           Broadcasts from Natenstine — horror games, Pokémon, WoW, lore talk, co-op sessions, writing streams, strange discoveries, and atmospheric exploration.
         </p>
@@ -349,11 +356,12 @@
 
           <div>
             <div class="stream-frame">
-              <!-- Replace YOUR_TWITCH_CHANNEL with your actual Twitch channel name. -->
-              <!-- Replace natenstine.com with your real domain when live. Twitch requires the parent domain. -->
               <iframe
-                src="https://player.twitch.tv/?channel=natenstinegames&parent=natenstine.com"
+                title="NatenstineGames Twitch stream"
+                src="https://player.twitch.tv/?channel=natenstinegames&amp;parent=natenstine.com&amp;parent=localhost&amp;parent=127.0.0.1"
                 allowfullscreen="true"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
                 scrolling="no">
               </iframe>
             </div>
@@ -385,10 +393,11 @@
           </div>
 
           <aside class="chat-frame" aria-label="Twitch chat embed">
-            <!-- Replace YOUR_TWITCH_CHANNEL with your actual Twitch channel name. -->
-            <!-- Replace natenstine.com with your real domain when live. -->
             <iframe
-              src="https://www.twitch.tv/embed/natenstinegames/chat?parent=natenstine.com"
+              title="NatenstineGames Twitch chat"
+              src="https://www.twitch.tv/embed/natenstinegames/chat?parent=natenstine.com&amp;parent=localhost&amp;parent=127.0.0.1"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
               scrolling="no">
             </iframe>
           </aside>
@@ -400,7 +409,7 @@
 
   <footer>
     <div class="container">
-      <div class="footer-title"><span style="color: var(--green-primary);">N</span>atenstine</div>
+      <div class="footer-title"><span class="text-accent">N</span>atenstine</div>
       <div class="footer-text">
         Broadcasts • Stories • Culture • Strange Worlds
       </div>

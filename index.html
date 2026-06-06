@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; script-src 'none'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://player.twitch.tv https://www.twitch.tv; upgrade-insecure-requests">
   <title>Natenstine</title>
 
   <!-- Fonts -->
@@ -51,6 +52,10 @@
       color: inherit;
     }
 
+    .text-accent {
+      color: var(--green-primary);
+    }
+
     img {
       max-width: 100%;
       display: block;
@@ -78,6 +83,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.2rem 0;
+      width: min(1200px, 92%);
+      margin: 0 auto;
     }
 
     .brand {
@@ -188,6 +195,16 @@
       color: rgba(216,210,191,0.78);
       font-size: 1.05rem;
       margin-bottom: 2rem;
+    }
+
+    .hero-kicker {
+      margin-top: -0.5rem;
+      margin-bottom: 1.5rem;
+      font-family: var(--font-heading);
+      letter-spacing: 0.18rem;
+      text-transform: uppercase;
+      color: rgba(216,210,191,0.52);
+      font-size: 0.9rem;
     }
 
     .button-group {
@@ -376,6 +393,14 @@
       font-size: 0.92rem;
     }
 
+    .footer-legal {
+      margin-top: 1.4rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.08rem;
+      color: rgba(216,210,191,0.34);
+      text-transform: uppercase;
+    }
+
     /* Responsive */
 
     @media (max-width: 900px) {
@@ -426,14 +451,14 @@
 </head>
 <body>
 
-  <nav>
+  <nav aria-label="Primary">
     <div class="container nav-inner">
       <a class="brand" href="index.html" aria-label="Natenstine Home">
         <img src="logo.png" alt="Natenstine Logo">
       </a>
 
       <div class="nav-links">
-        <a href="index.html" class="active">Home</a>
+        <a href="index.html" class="active" aria-current="page">Home</a>
         <a href="the-nexus.html">The Nexus</a>
         <a href="live.html">Live</a>
         <a href="about.html">About</a>
@@ -444,58 +469,60 @@
     </div>
   </nav>
 
-  <header class="hero">
-    <div class="container hero-content">
+  <main>
+    <header class="hero">
+      <div class="container hero-content">
 
-      <div>
+        <div>
         
 
-        <h1><span style="color: var(--green-primary);">N</span>atenstine</h1>
+          <h1><span class="text-accent">N</span>atenstine</h1>
 
-        <div style="margin-top: -0.5rem; margin-bottom: 1.5rem; font-family: var(--font-heading); letter-spacing: 0.18rem; text-transform: uppercase; color: rgba(216,210,191,0.52); font-size: 0.9rem;">
-          Gateway to the Nexus
+          <div class="hero-kicker">
+            Gateway to the Nexus
+          </div>
+
+          <p>
+            Broadcasts, stories, strange worlds, and connected works moving through the Nexus.
+          </p>
+
+          <div class="button-group">
+            <a href="the-nexus.html" class="btn btn-primary">Enter the Nexus</a>
+            <a href="live.html" class="btn btn-secondary">Watch Live</a>
+          </div>
         </div>
 
-        <p>
-          Broadcasts, stories, strange worlds, and connected works moving through the Nexus.
-        </p>
-
-        <div class="button-group">
-          <a href="the-nexus.html" class="btn btn-primary">Enter the Nexus</a>
-          <a href="live.html" class="btn btn-secondary">Watch Live</a>
+        <div class="hero-logo">
+          <img src="logo.png" alt="Natenstine Emblem">
         </div>
-      </div>
 
-      <div class="hero-logo">
-        <img src="logo.png" alt="Natenstine Emblem">
       </div>
+    </header>
 
-    </div>
-  </header>
-
-  <section class="social-section">
-    <div class="container">
-      <div class="social-links" aria-label="Natenstine social links">
-        <a href="https://x.com/natenstine" target="_blank" rel="noopener noreferrer">X / Twitter</a>
-        <a href="https://www.reddit.com/r/Natenstine/" target="_blank" rel="noopener noreferrer">Reddit</a>
-        <a href="https://www.youtube.com/channel/UCYkj3n76gEt-HwKu1sWp8ZA" target="_blank" rel="noopener noreferrer">YouTube</a>
-        <a href="https://www.twitch.tv/natenstinegames" target="_blank" rel="noopener noreferrer">Twitch</a>
-        <a href="https://facebook.com/Nateizens" target="_blank" rel="noopener noreferrer">Facebook</a>
-        <a href="https://instagram.com/natenstine" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="https://discord.gg/4kmRcWj" target="_blank" rel="noopener noreferrer">Discord</a>
-        <a href="https://www.tiktok.com/@natenstine" target="_blank" rel="noopener noreferrer">TikTok</a>
+    <section class="social-section">
+      <div class="container">
+        <nav class="social-links" aria-label="Natenstine social links">
+          <a href="https://x.com/natenstine" target="_blank" rel="noopener noreferrer">X / Twitter</a>
+          <a href="https://www.reddit.com/r/Natenstine/" target="_blank" rel="noopener noreferrer">Reddit</a>
+          <a href="https://www.youtube.com/channel/UCYkj3n76gEt-HwKu1sWp8ZA" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a href="https://www.twitch.tv/natenstinegames" target="_blank" rel="noopener noreferrer">Twitch</a>
+          <a href="https://facebook.com/Nateizens" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://instagram.com/natenstine" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://discord.gg/4kmRcWj" target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="https://www.tiktok.com/@natenstine" target="_blank" rel="noopener noreferrer">TikTok</a>
+        </nav>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer>
     <div class="container">
-      <div class="footer-title"><span style="color: var(--green-primary);">N</span>atenstine</div>
+      <div class="footer-title"><span class="text-accent">N</span>atenstine</div>
       <div class="footer-text">
         Broadcasts • Stories • Culture • Strange Worlds
       </div>
 
-      <div style="margin-top: 1.4rem; font-size: 0.72rem; letter-spacing: 0.08rem; color: rgba(216,210,191,0.34); text-transform: uppercase;">
+      <div class="footer-legal">
         © Natenstine. All Rights Reserved.
       </div>
     </div>

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; script-src 'none'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://player.twitch.tv https://www.twitch.tv; upgrade-insecure-requests">
   <title>The Nexus | Natenstine</title>
 
   <!-- Fonts -->
@@ -46,6 +47,10 @@
       text-decoration: none;
     }
 
+    .text-accent {
+      color: var(--green-primary);
+    }
+
     img {
       max-width: 100%;
       display: block;
@@ -71,6 +76,8 @@
       align-items: center;
       gap: 1rem;
       padding: 1.2rem 0;
+      width: min(1200px, 92%);
+      margin: 0 auto;
     }
 
     .brand img {
@@ -310,7 +317,7 @@
 </head>
 <body>
 
-  <nav>
+  <nav aria-label="Primary">
     <div class="container nav-inner">
       <a class="brand" href="index.html" aria-label="Natenstine Home">
         <img src="logo.png" alt="Natenstine Logo">
@@ -318,7 +325,7 @@
 
       <div class="nav-links">
         <a href="index.html">Home</a>
-        <a href="the-nexus.html" class="active">The Nexus</a>
+        <a href="the-nexus.html" class="active" aria-current="page">The Nexus</a>
         <a href="live.html">Live</a>
         <a href="about.html">About</a>
         <a href="links.html">Links</a>
@@ -332,7 +339,7 @@
     <header class="page-hero">
       <div class="container">
         
-        <h1><span style="color: var(--green-primary);">T</span>he Nexus</h1>
+        <h1><span class="text-accent">T</span>he Nexus</h1>
         <p>
           The connected body of Natenstine works — broadcasts, stories, strange worlds, lore systems, creative experiments, and ongoing Nodes built around atmosphere, curiosity, and immersive exploration.
         </p>
@@ -440,7 +447,7 @@
 
   <footer>
     <div class="container">
-      <div class="footer-title"><span style="color: var(--green-primary);">N</span>atenstine</div>
+      <div class="footer-title"><span class="text-accent">N</span>atenstine</div>
       <div class="footer-text">
         Broadcasts • Stories • Culture • Strange Worlds
       </div>

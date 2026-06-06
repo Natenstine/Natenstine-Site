@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; script-src 'none'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://player.twitch.tv https://www.twitch.tv; upgrade-insecure-requests">
   <title>About | Natenstine</title>
 
   <!-- Fonts -->
@@ -46,13 +47,17 @@
       text-decoration: none;
     }
 
+    .text-accent {
+      color: var(--green-primary);
+    }
+
     img {
       max-width: 100%;
       display: block;
     }
 
     .container {
-      width: min(1100px, 92%);
+      width: min(1200px, 92%);
       margin: 0 auto;
     }
 
@@ -71,6 +76,8 @@
       align-items: center;
       gap: 1rem;
       padding: 1.2rem 0;
+      width: min(1200px, 92%);
+      margin: 0 auto;
     }
 
     .brand img {
@@ -222,6 +229,17 @@
       background: rgba(0,0,0,0.18);
     }
 
+    .quote-line.compact {
+      padding: 1.4rem 1.6rem;
+      font-size: 0.96rem;
+      line-height: 1.7;
+    }
+
+    .contact-highlight {
+      color: var(--green-primary);
+      font-size: 1rem;
+    }
+
     footer {
       padding: 4rem 0 2rem;
       text-align: center;
@@ -275,7 +293,7 @@
 </head>
 <body>
 
-  <nav>
+  <nav aria-label="Primary">
     <div class="container nav-inner">
       <a class="brand" href="index.html" aria-label="Natenstine Home">
         <img src="logo.png" alt="Natenstine Logo">
@@ -285,7 +303,7 @@
         <a href="index.html">Home</a>
         <a href="the-nexus.html">The Nexus</a>
         <a href="live.html">Live</a>
-        <a href="about.html" class="active">About</a>
+        <a href="about.html" class="active" aria-current="page">About</a>
         <a href="links.html">Links</a>
         <a href="support.html">Support</a>
         <a href="mail.html">Mail</a>
@@ -297,7 +315,7 @@
     <header class="page-hero">
       <div class="container">
         <div class="eyebrow">About</div>
-        <h1><span style="color: var(--green-primary);">N</span>atenstine</h1>
+        <h1><span class="text-accent">N</span>atenstine</h1>
         <p>
           Broadcasts, stories, strange worlds, and interconnected works moving through the Nexus.
         </p>
@@ -320,8 +338,8 @@
 
           
 
-          <div class="quote-line" style="padding: 1.4rem 1.6rem; font-size: 0.96rem; line-height: 1.7;">
-            For collaborations, sponsorships, business inquiries, or creative opportunities: <span style="color: var(--green-primary); font-size: 1rem;">Hello@natenstine.com</span>
+          <div class="quote-line compact">
+            For collaborations, sponsorships, business inquiries, or creative opportunities: <span class="contact-highlight">Hello@natenstine.com</span>
           </div>
         </div>
 
@@ -349,7 +367,7 @@
 
   <footer>
     <div class="container">
-      <div class="footer-title"><span style="color: var(--green-primary);">N</span>atenstine</div>
+      <div class="footer-title"><span class="text-accent">N</span>atenstine</div>
       <div class="footer-text">
         Broadcasts • Stories • Culture • Strange Worlds
       </div>
